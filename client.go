@@ -83,9 +83,6 @@ func (c *Client) ReadMsg() {
 			if _, ok := clients[message.ToUserId]; !ok {
 				continue
 			}
-		} else if _, ok := c.hub.clients[message.ChannelId][c]; !ok {
-			msgStore.ErrorLogServer(fmt.Errorf("用户`%d`未监听`%s`频道，不能发送消息", c.Id, message.ChannelId))
-			continue
 		}
 
 		if string(strByte) != "" {
